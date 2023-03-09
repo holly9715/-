@@ -18,6 +18,7 @@ def change_size(video_path: str, output_dir: str, width: int, height: int, bit_r
     _result_path = os.path.join(
         output_dir, '{}.{}'.format(
             uuid.uuid1().hex, ext))
+    #注意这里要去找这个executable目标的文件路径,否者可能会报错
     ff = FFmpeg(executable="D:\\python\\Lib\\site-packages\\imageio_ffmpeg\\binaries\\ffmpeg-win64-v4.2.2.exe", inputs={'{}'.format(video_path): None}, outputs={
         _result_path: '-s {}*{} -b {}k'.format(width, height, bit_rate)})
     print(ff.cmd)
